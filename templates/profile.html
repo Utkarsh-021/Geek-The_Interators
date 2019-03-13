@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Profile</title>
+   <link rel="icon" type="image/gif" href="img_mountains_wide.jpg" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src='jquery-2.2.1.min.js'></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src = "https://maps.googleapis.com/maps/api/js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+   #header{
+        text-align: center;
+    background-color: #1c3d4c;
+    color: azure;}
+    .affix {
+      top: 0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
+   .form-control{
+    width:50%;
+  }
+  .modal-content{
+    background-color: lavender;
+  }
+  #myModal{
+    overflow-y:scroll;
+    top:30px;
+    height: 600px;
+  }
+#tag1,#tag2,#tag3,#tag4{
+    text-decoration: none;
+    font-size: 25px;
+    margin-left: 15px;
+        color: #18191991;
+  }
+  
+  #footer-main{
+    color: white;
+    margin-left: 30px;
+    position: relative;
+    top: 15px;
+    text-decoration: none;
+        filter: blur(.5px);
+  }
+  #position a,#position p{
+    font-size: 20px;
+    color: white;
+    top: -35px;
+    position: relative;
+    text-decoration: none;
+  }
+   #tag1,#tag2,#tag3,#tag4{
+    text-decoration: none;
+    font-size: 25px;
+    margin-left: 15px;
+        color: #18191991;
+  }
+  body{
+    background-color: #9e9e9e5e;
+    position: relative;
+    top: 74px;
+  }
+</style>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var n=0;
+      var login=1;
+$("#tag1,#tag2,#tag3,#tag4").on({
+    mouseenter: function(){
+    $(this).css("color", "black");
+    }, 
+    mouseleave: function(){
+       
+        $(this).css("color", "white");
+    }, 
+    });
+$("#edit").on({
+    mouseenter: function(){
+    $("#edit a").css("color", "#3f51b5bd");
+      $("#edit a").css("font-size", "25px");
+    }, 
+    mouseleave: function(){
+       
+        $("#edit a").css("color", "white");
+         $("#edit a").css("font-size", "20px");
+    }, 
+    });
+    $("#edit").click(function(){
+      $("input,radio,textarea").removeAttr("readonly");
+      $(":disabled").removeAttr("disabled");
+      $(":submit").css("background-color","yellow");
+
+    });
+   
+     $(".glyphicon-search").click(function(){
+     // $(this).css("display","none");
+      $("#search_doctor").toggle();
+     });
+      $("#nav-left").click(function(){
+        alert("shiva");
+      if(n==0)
+      {alert("sljdlsk");
+      $("#suggestion").modal();
+n=n+1;
+    }
+        $("#arrow-top").css("display","block");  
+        $("#arrow-top").css("left","-710px");  
+       $("#check1").html("<input style=' padding: 15px;  width: 600px; border-color: red; margin-right: 0px; ' type='search' name='searching1' placeholder='Searching The Doctor By City Asnd Name'><span class='glyphicon glyphicon-search' style='font-size: 30px; margin-left: -2px; top: 10px; border: solid 2px red; padding: 10px;'></span>");
+    });     
+   $("#nav-left1").click(function(){
+    if(n==0)
+    {
+        $("#suggestion").modal();
+        n=n+1;
+    }
+     $("#arrow-top").css("display","block");  
+        $("#arrow-top").css("left","-610px");  
+      $("#check1").html("<b>Treatment</b>");
+    }); 
+    $("#nav-left2").click(function(){
+    if(n==0)
+    {
+        $("#suggestion").modal();
+        n=n+1;
+    }
+     $("#arrow-top").css("display","block");  
+        $("#arrow-top").css("left","-520px");  
+      $("#check1").html("<b>Suggestion</b>");
+    }); 
+     $("#nav-left3").click(function(){
+    if(n==0)
+    {
+        $("#suggestion").modal();
+        n=n+1;
+    }
+     $("#arrow-top").css("display","block");  
+        $("#arrow-top").css("left","-425px");  
+      $("#check1").html("<b>Facilities</b>");
+    }); 
+$("#suggestion").on('hidden.bs.modal', function () {
+            n=0;
+             $("#arrow-top").css("display","none");  
+
+    });
+
+$("#myReport").click(function(){
+ if(login==0)
+  {
+ $("#mymodal").modal({backdrop:"static"});
+}
+ if(login==1)
+  {
+    window.open("myReport.html","_self");
+  }
+  
+});
+$("#appointment").click(function(){
+ if(login==0)
+  {
+ $("#mymodal").modal({backdrop:"static"});
+  }
+  if(login==1)
+  {
+    window.open("appointment.html","_self");
+  }
+
+});
+ $(".dropdown-toggle").dropdown();
+ $("#logout").click(function(){
+  window.open("slide.html","_self");
+ });
+
+  });
+</script>
+</head>
+
+
+    <nav class="navbar " data-spy="affix" style="margin-bottom: 0px;  background-color:white;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      
+      <a class="navbar-brand" href="#" style="font-size: 25px; margin-left: 100px; margin-right: 50px;">WebSiteName</a>
+
+    </div>
+    <div class="collapse navbar-collapse"  id="myNavbar">
+      <ul class="nav navbar-nav" style="margin-left: 8px;">
+        <li id="nav-left"  ><a style="padding-top: 25px; padding-bottom: 25px;" >Doctors</a></li>
+        <li id="nav-left1"><a style="padding-top: 25px; padding-bottom: 25px;">Treatment</a></li>
+        <li id="nav-left2"><a style="padding-top: 25px; padding-bottom: 25px;" >Suggestion</a></li>
+        <li id="nav-left3" ><a style="padding-top: 25px; padding-bottom: 25px;">Facilities</a></li>
+        <li style="padding:12px; display: none; position:absolute; background-color: white; " id="search_doctor"><input type="search" name='search' placeholder="Search " style="background-color: initial; position: relative; top: 5px;
+    color: white;
+    /* margin-top: 12px; */
+    border: none;
+    border-bottom: outset;
+    width: 350px;">
+        </li>
+        <span class="glyphicon glyphicon-search" style="font-size: 30px;margin-left: 7px; top:15px;"></span>
+     
+       </ul>
+         <ul class="nav navbar-nav " style="margin-left: 85px; margin-top: 5px;">
+      
+         <li style="top:10px; margin-right:15px;margin-left: -20px; "><button  id="myReport" href="myReport.html" style="font-size: 15px;color: #F44336; border-color: #F44336;" class="btn btn-default">My Reports</button></li>
+         <li style="top:10px; "><button id="appointment" style="font-size: 15px;color: #F44336;background-color:#F44336; color:white ;" class="btn btn-default">Book an Appointment</button></li>
+       </ul>
+         
+       <ul class="nav navbar-nav navbar-right" id="after-sign">
+         <li class="dropdown">
+          <a  style="padding-top: 25px; padding-bottom: 25px;" class="dropdown-toggle" data-toggle="dropdown" href="#">UserName <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="#">ForgetPassword</a></li>
+            <li><a href="#">All Transaction</a></li>
+             <li><a id="logout" style="cursor: pointer;">LogOut</a></li>
+          </ul>
+        </li>
+      </ul>
+        
+      <i class='arrow up' id="arrow-top" style='   font-size: 10px; width: 30px; height: 30px; background-color: lavender; top: 57px; border: solid; border-width: 1px 0 0 1px; border-color: red; transform: rotate(45deg); position: relative; left: -170px; display: none;'></i>
+    </div>
+  </div>
+</nav>
+
+
+   <body>
+
+  <div class="container-fluid" id="position" style="    height: 120px;
+    width: 100%;
+    background-color: #e23b18;
+    text-align: center;">
+      <a  href="slide.html">Home</a>
+      <p style="    display: inline-block;">/ Profile</p>
+    </div>
+  <div class="container" style="background-color: cadetblue;
+    margin-bottom: 20px;
+    margin-top: -50px;
+    padding-top: 50px;">
+     <form action="profile.html" method="post" autocomplete="on">
+     <div class="form-inline">
+    <div class="form-group">
+      <label for="name">First Name :</label>
+      <input type="text" class="form-control" name="ufname"  readonly>
+    </div>
+        <div class="form-group">
+      <label for="lastname">Last Name :</label>
+      <input type="text" class="form-control" name="ulname" readonly>
+    </div>
+</div><br/>
+ <div  id="edit" class="form-group"  style="    float: right;
+    
+    margin-right: 100px;
+    width: 100px; text-align: center;">
+ <a  style="color: white;font-size: 20px; text-decoration: none; cursor: pointer;">Edit</a>
+    </div>
+    <div class="form-group">
+      <label for="email"> Email :</label>
+      <input type="email"  class="form-control" name="email" readonly>
+    </div>
+     <div class="form-inline">
+      <label for="gender">Gender :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <div class="radio">
+      <label for="male">
+      <input type="radio"  disabled="disabled" name="gender">Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+    </div>
+    <div class="radio">
+      <label for="female">
+      <input type="radio"  disabled="disabled" name="gender">Female</label>
+    </div>
+  </div><br/>
+    <div class="form-group">
+      <label for="bdate">Date of Birth : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+      <input type="date"  readonly name="bdate">
+    </div>
+   
+   <div class="form-inline">
+      <label for="blood">Blood Group :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <select disabled="disabled" style="    width: 320px;" name="blood" value="" class="form-control" name="blood">
+      <option>-select blood group-</option>
+      <option>o+</option>
+      <option>o-</option>
+      <option>o+</option>
+      <option>o+</option>
+      <option>other</option>
+      
+    </select>
+  </div><br/>
+    <div class="form-group">
+      <label for="mobile">Mobile No. :</label>
+      <input type="number"  readonly class="form-control" name="mobileno">
+    </div>
+    <div class="form-group">
+      <label for="name">Address :</label>
+      <textarea rows="2" readonly class="form-control"></textarea>
+    </div>
+     <div class="form-group">
+      <label for="state">State :</label>
+      <input type="text"  readonly class="form-control" name="ustate">
+    </div>
+     <div class="form-group">
+      <label for="city">City :</label>
+      <input type="text"  readonly class="form-control" name="ucity">
+    </div>
+   
+    <div class="form-inline" id="submit" style="margin-left: 120px;     margin-bottom: 50px;
+    margin-top: 30px;">
+     <input style="width: 120px;"  disabled="disabled" type="submit" class="form-control" value="Update">
+    
+    </div>
+   
+  </form>
+  </div> 
+   <div class="modal slide" id="suggestion" role="dialog" style="top:42px;">
+    <div class="modal-dialog" style="margin-left: 125px; width: 1010px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content"id="check1"  style="border-radius: 0px; padding: 120px; border-top-color: red; ">
+        <span class="glyphicon glyphicon-triangle-top"></span>
+       
+      </div>
+      
+    </div>
+</div>
+    <div   style="background-image:url('img_nature_wide.jpg');  
+height:400px;background-size: 100%">
+  
+      <div class="container-fluid" style="     height: inherit;
+    text-align: center;   background-color: #1f1c1cad;
+    color: white;">
+   <h1 style="top: 50px;
+    position: relative;">Give it a try before your commit</h1>
+   <h4 style="top: 70px;
+    position: relative;">You can test drive before deciding on one of plans .Just give us your<br/> email address, and we'll send you the details.</h4>
+         
+    </div>
+  </div>
+  <footer style="    background: #2196F3;
+    font-size: 15px;
+    height: 70px;">
+    <a href="" id="footer-main">ABOUT</a>
+    <a href="" id="footer-main">CONTACT US</a>
+    <a href="" id="footer-main">PRIVACY POLICY</a>
+    <a href="" id="footer-main">TERMS</a>
+    <div style="    margin-right: 20px;
+    float: right;
+    top: 15px;
+    position: relative;" >
+   
+    <a href="#"  title="Twitter"><i id="tag1" style="color: white;" class="fa fa-twitter"></i></a>
+    <a href="#"  title="Google"><i id="tag1" style="color: white;" class="fa fa-google"></i></a>
+    <a href="#"  title="Facebook"><i id="tag1" style="color: white;"  class="fa fa-facebook"></i></a>
+     <a href="#"  title="Dribble"><i id="tag1" style="color: white;" class="fa fa-dribbble"></i></a> 
+    
+    
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+   var infowindow,
+          placemarkers=[];
+          var directionsDisplay;
+          var directionsService;
+          var currentPosition,destinationPosition;
+      
+      
+      function placeSearch(map,request)
+      {
+        var map=map;
+        var service = new google.maps.places.PlacesService(map);
+        service.search(request, 
+                       function(results,status)
+                       {
+                        if (status == google.maps.places.PlacesServiceStatus.OK) 
+                        {
+                          var bounds=new google.maps.LatLngBounds();
+                          for (var i = 0; i < results.length; ++i) 
+                          { 
+                            bounds.extend(results[i].geometry.location);
+                            placemarkers.push(createMarker(results[i].geometry.location,
+                                         map,
+                                         'http://labs.google.com/ridefinder/images/mm_20_orange.png',
+                                         results[i].name,
+                                         false,
+                                         {
+                                          fnc:function() 
+                                          {
+                                            infowindow.open();
+                                          }
+                            
+                                         }));
+                          }
+                          map.fitBounds(bounds);
+                        }
+                       }
+                       );
+      
+      }
+      
+      function createMarker(latlng,map,icon,content,center,action) 
+      {
+        
+        
+        var marker = new google.maps.Marker({
+          map: map,
+          position: latlng,
+          content:content
+        });
+        center1={lat: latlng.lat(), lng:latlng.lng() } 
+        if(icon){marker.setIcon(icon);}
+        
+        if(center)
+        {
+          map.setCenter(latlng);
+        }
+
+        
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(this.content);
+          infowindow.open(map, this);
+          calculateAndDisplayRoute(directionsService, directionsDisplay,currentPosition,latlng);
+        });
+        
+        if(action)
+        {
+          action.fnc(map,action.args);
+        }
+        return marker;
+      }
+      function calculateAndDisplayRoute(directionsService, directionsDisplay,currentPosition,destinationPosition) {
+        alert("enetr");
+        directionsService.route({
+         origin: currentPosition,
+          destination:destinationPosition,
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status == 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+      function initialize()
+      {
+        
+        //var location = new google.maps.LatLng(-33.8665433, 151.1956316),
+            map = new google.maps.Map(document.getElementById('map'), {
+                      mapTypeId: google.maps.MapTypeId.ROADMAP,
+                      center: location,
+                      zoom: 15
+                     });
+         infowindow = new google.maps.InfoWindow();
+          directionsDisplay = new google.maps.DirectionsRenderer;
+         directionsService = new google.maps.DirectionsService;
+         navigator.geolocation.getCurrentPosition(function(place)
+         {      currentPosition={lat: place.coords.latitude, lng:place.coords.longitude }   
+         alert(currentPosition);  
+            createMarker(
+                          new google.maps.LatLng(place.coords.latitude,
+                                                place.coords.longitude),
+                          map,
+                          null,
+                          'your current position',
+                          true,
+                          {
+                           fnc:placeSearch,
+                           args:{
+                                 radius: 5000,
+                                 types: ['hospital'],
+                                 location:new google.maps.LatLng(place.coords.latitude,
+                                                                 place.coords.longitude)
+                                }
+                         }
+                         );      
+         });
+         directionsDisplay.setMap(map);
+         directionsDisplay.setPanel(document.getElementById('right-panel'));
+      }
+
+
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmH32IIuDWFmSpzeZUI5DlVuagUoT-4p8&libraries=geometry&libraries=places&callback=initialize">
+</script>
+<div id='map' style="height: 500px;"></div>
+       <div id="right-panel"></div>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Take Care Your Health Example</title>
+   <link rel="icon" type="image/gif" href="img_mountains_wide.jpg" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src='jquery-2.2.1.min.js'></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src = "https://maps.googleapis.com/maps/api/js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+  	.affix {
+      top: 0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
+  #header{
+  	    text-align: center;
+    background-color: #1c3d4c;
+    color: azure;
+  }
+  .form-control{
+  	width:50%;
+  }
+  .modal-content{
+  	background-color: lavender;
+  }
+  #myModal{
+  	overflow-y:scroll;
+  	top:65px;
+  	height: 600px;
+  }
+  .modal-backdrop{
+  	opacity: .7;
+  }
+  #check{
+  	width: 33%;
+  	    margin-bottom: 15px;
+  	
+  }
+  #tag1,#tag2,#tag3,#tag4{
+  	text-decoration: none;
+    font-size: 25px;
+    margin-left: 15px;
+        color: #18191991;
+  }
+  #footer-main{
+  	color: white;
+    margin-left: 30px;
+    position: relative;
+    top: 15px;
+    text-decoration: none;
+        filter: blur(.5px);
+  }
+  #footer1{
+  	background-image: 
+  }
+  #tagg{
+  	color: black;
+    font-size: 18px;
+    text-decoration-line: underline;
+    text-decoration-color: red;
+    position: relative;
+    top: 8px;
+  }
+  i{ font-size: 35px;
+		    margin-left: 10px;
+  
+    color: white;
+          
+    float: right;
+	}
+   #id{
+         padding-right: 0px;
+         padding-left: 0px;
+    border: solid 1px;
+    text-align: center;
+    width:350px;
+    display: none;
+  }
+  #slide-left,#slide1-left,#slide2-left,#slide3-left
+  {
+  	 list-style: none;
+    padding-right: px;
+   
+    width: 150px;
+    margin-bottom: 10px;
+        height: 37px;
+            transition: .3s;
+  }
+    #tag{
+      color: #0e0e0e;
+    text-decoration: none;
+    font-size: 25px;
+    margin-left: 15px;
+    }
+    #slide{
+    	      padding-left: 0px;
+    margin-top: -150px;
+    margin-left: -117px;
+    position: fixed;
+    }
+    #contact{
+          margin-bottom: 0px;
+    background-color: black;
+    font-size: 25px;
+    color:white;
+    }
+     #position a,#position p{
+    font-size: 20px;
+    color: white;
+    top: 5px;
+    position: relative;
+    text-decoration: none;
+  }
+    #contact:hover{
+      cursor: pointer;
+    }
+  body{
+    background-color: #9e9e9e5e;
+    position: relative;
+    top: 74px;
+  }
+  </style>
+  <script>
+  	$(document).ready(function(){
+  		var n=0;
+      var login=0;
+    	$(".close").on({
+    mouseenter: function(){
+        $(this).css("background-color", "red");
+        $(this).css("color", "white");
+    }, 
+    mouseleave: function(){
+        $(this).css("background-color", "lavender");
+        $(this).css("color", "black");
+    }, 
+  	});
+      $('#logina').click(function(){
+     alert("shviam");
+      $('#mymodal').modal(hide);
+  // Load up a new modal...
+  $('#myModal').modal('show');
+    });
+  	
+  	$("#logina").on({
+    mouseenter: function(){
+    
+     
+        $(this).css("color", "blue");
+    }, 
+    mouseleave: function(){
+       
+        $(this).css("color", "black");
+    }, 
+  	});
+  	$("#tag1,#tag2,#tag3,#tag4").on({
+    mouseenter: function(){
+    $(this).css("color", "black");
+    }, 
+    mouseleave: function(){
+       
+        $(this).css("color", "white");
+    }, 
+  	});
+  	$("#slide-left,#slide1-left,#slide2-left,#slide3-left").on({
+    mouseenter: function(){
+    $(this).css("margin-left", "120px");
+    }, 
+    mouseleave: function(){
+       
+        $(this).css("margin-left", "0px");
+    }, 
+  	});
+  	  $("#myModal").on('show.bs.modal', function () {
+  	  	
+  	  	$("#pageContent").css("opacity","1");
+  	  });
+     $(".glyphicon-search").click(function(){
+     // $(this).css("display","none");
+      $("#search_doctor").toggle();
+
+     });
+     $("#nav-left").click(function(){
+      if(n==0)
+      {
+      $("#suggestion").modal();
+n=n+1;
+    }
+        $("#arrow-top").css("display","block");  
+        $("#arrow-top").css("left","-845px");  
+       $("#check1").html("<input style=' padding: 15px;  width: 600px; border-color: red; margin-right: 0px; ' type='search' name='searching1' placeholder='Searching The Doctor By City Asnd Name'><span class='glyphicon glyphicon-search' style='font-size: 30px; margin-left: -2px; top: 10px; border: solid 2px red; padding: 10px;'></span>");
+    });     
+   $("#nav-left1").click(function(){
+    if(n==0)
+    {
+        $("#suggestion").modal();
+        n=n+1;
+    }
+     $("#arrow-top").css("display","block");  
+        $("#arrow-top").css("left","-765px");  
+      $("#check1").html("<b>Treatment</b>");
+    }); 
+    $("#nav-left2").click(function(){
+    if(n==0)
+    {
+        $("#suggestion").modal();
+        n=n+1;
+    }
+     $("#arrow-top").css("display","block");  
+        $("#arrow-top").css("left","-655px");  
+      $("#check1").html("<b>Suggestion</b>");
+    }); 
+     $("#nav-left3").click(function(){
+    if(n==0)
+    {
+        $("#suggestion").modal();
+        n=n+1;
+    }
+     $("#arrow-top").css("display","block");  
+        $("#arrow-top").css("left","-565px");  
+      $("#check1").html("<b>Facilities</b>");
+    }); 
+$("#suggestion").on('hidden.bs.modal', function () {
+            n=0;
+             $("#arrow-top").css("display","none");  
+
+    });
+
+
+
+
+  $("#signupandin").css("display","none");
+  $("#after-sign").css("display","block");
+login=1;
+
+/*$("#myBtn").click(function(){
+ $("#mymodal").on('hidden.bs.modal', function () {
+  $("#myModal").modal({backdrop:"static"});
+            
+    });
+});
+*/
+$("#myReport").click(function(){
+ if(login==0)
+  {
+ $("#mymodal").modal({backdrop:"static"});
+  }
+  else
+  {
+    window.open("myReport.html","_self");
+  }
+
+});
+ $(".dropdown-toggle").dropdown();
+$("#appointment").click(function(){
+ if(login==0)
+  {
+ $("#mymodal").modal({backdrop:"static"});
+  }
+  else
+  {
+    window.open("appointment.html","_self");
+  }
+
+});
+for(var i=0;i<10;i++)
+{
+$("#document").append("<div class='container-fluid' style='margin-top: 20px; float: left;width: 25%; margin-left:20px;background-color:white;height:80px;'><b style='color:red;'>OutPatient</b><br/><b>doctor Name</b><p style='margin:0px;'>Treatment Name</p><p style='margin:0px;'>Date</p>   </div> <div class='container'  style='width: 65%; background-color:white;height:80px; float: right;margin-top: 20px;margin-left: 50px;'><b>Date</b> <br/><p>Treatment Name</p></div>");
+}
+ $("#logout").click(function(){
+  window.open("slide.html","_self");
+ });
+});
+
+
+
+  </script>
+</head>
+<article>
+
+  <nav class="navbar " data-spy="affix" style="margin-bottom: 0px;  background-color:white;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      
+      <a class="navbar-brand" style="font-size: 25px; margin-left: 100px; margin-right: 50px;">Doctor On The Way</a>
+
+    </div>
+    <div class="collapse navbar-collapse"  id="myNavbar">
+      <ul class="nav navbar-nav" style="margin-left: 8px;">
+        <li id="nav-left"  ><a style="padding-top: 25px; padding-bottom: 25px;" >Doctors</a></li>
+        <li id="nav-left1"><a style="padding-top: 25px; padding-bottom: 25px;">Treatment</a></li>
+        <li id="nav-left2"><a style="padding-top: 25px; padding-bottom: 25px;" >Suggestion</a></li>
+        <li id="nav-left3" ><a style="padding-top: 25px; padding-bottom: 25px;">Facilities</a></li>
+        <li style="padding:12px; display: none; position:absolute; background-color: white; " id="search_doctor"><input type="search" name='search' placeholder="Search " style="background-color: initial; position: relative; top: 5px;
+    
+    /* margin-top: 12px; */
+    border: none;
+    border-bottom: outset;
+    width: 350px;">
+        </li>
+        <span class="glyphicon glyphicon-search" style="font-size: 30px;margin-left: 7px; top:15px;"></span>
+     
+       </ul>
+         <ul class="nav navbar-nav " style="margin-left: 85px; margin-top: 5px;" >
+      
+         <li style="top:10px; margin-right:15px;margin-left: -20px; "><button  id="myReport"style="font-size: 15px;color: #F44336; border-color: #F44336;" class="btn btn-default">My Reports</button></li>
+         <li style="top:10px; "><button id="appointment" style="font-size: 15px;color: #F44336;background-color:#F44336; color:white ;" class="btn btn-default">Book an Appointment</button></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" id="after-sign" style="display: none;">
+         <li class="dropdown">
+          <a  style="padding-top: 25px; padding-bottom: 25px;" class="dropdown-toggle" data-toggle="dropdown" href="#">UserName <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="#">ForgetPassword</a></li>
+            <li><a href="#"> All Transaction</a></li>
+             <li><a id="logout" style="cursor: pointer;">LogOut</a></li>
+          </ul>
+        </li>
+      </ul>
+        
+         
+      <i class='arrow up' id="arrow-top" style='   font-size: 10px; width: 30px; height: 30px; background-color: lavender; top: 57px; border: solid; border-width: 1px 0 0 1px; border-color: red; transform: rotate(45deg); position: relative; left: -170px; display: none;'></i>
+      
+    </div>
+  </div>
+</nav>
+
+</article>
+<body>
+
+ 
+  <div class="container-fluid" id="position" style="    height: 50px;
+    width: 100%;
+    background-color: #e23b18;
+    text-align: center;">
+      <a  href="slide.html">Home</a>
+      <p style="    display: inline-block;">/ MyReport</p>
+    </div>
+        
+  
+
+ <div class="modal slide" id="suggestion" role="dialog" style="top:42px;">
+    <div class="modal-dialog" style="margin-left: 125px; width: 1010px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content"id="check1"  style="border-radius: 0px; padding: 120px; border-top-color: red; ">
+        <span class="glyphicon glyphicon-triangle-top"></span>
+       
+      </div>
+      
+    </div>
+</div>
+ <div class="container-fluid" style="margin-top: 20px; margin-bottom: 20px;">
+ <div class="container-fluid">
+   <div class="container-fluid" style="float: left;">
+  <h3>MyReport</h3>
+</div>
+  <div class="container-fluid" style="position: relative;top: 20px;     float: right;">
+
+    <b>From</b>
+    <input type="date" value="from" name="from-date">
+    <b>To</b>
+    <input type="date" value="To" name="to-date">
+    <input type="submit" name="search" value="search" style="color:white;background-color:#e23b18;">
+  </div>
+</div>
+  <div id="document" class="container-fluid" style="width: 1100px;background-color:#808080b5;color:black; margin-top: 45px;height: 500px;overflow:auto;">
+
+ 
+
+  </div>
+ </div>
+
+ 
+   
+
+  <div   style="background-image:url('img_mountains_wide.jpg');  
+height:400px;background-size: 100%">
+  
+  		<div class="container-fluid" style="     height: inherit;
+    text-align: center;   background-color: #1f1c1cad;
+    color: white;">
+   <h1 style="top: 50px;
+    position: relative;">Give it a try before your commit</h1>
+   <h4 style="top: 70px;
+    position: relative;">You can test drive before deciding on one of plans .Just give us your<br/> email address, and we'll send you the details.</h4>
+         
+    </div>
+  </div>
+  <footer style="    background: #2196F3;
+    font-size: 15px;
+    height: 70px;">
+  	<a href="" id="footer-main">ABOUT</a>
+  	<a href="" id="footer-main">CONTACT US</a>
+  	<a href="" id="footer-main">PRIVACY POLICY</a>
+  	<a href="" id="footer-main">TERMS</a>
+  	<div style="    margin-right: 20px;
+    float: right;
+    top: 15px;
+    position: relative;" >
+   
+    <a href="#"  title="Twitter"><i id="tag1" style="color: white;" class="fa fa-twitter"></i></a>
+    <a href="#"  title="Google"><i id="tag1" style="color: white;" class="fa fa-google"></i></a>
+    <a href="#"  title="Facebook"><i id="tag1" style="color: white;"  class="fa fa-facebook"></i></a>
+     <a href="#"  title="Dribble"><i id="tag1" style="color: white;" class="fa fa-dribbble"></i></a> 
+    
+  	</div>
+  </footer>
+</body>
+</html>

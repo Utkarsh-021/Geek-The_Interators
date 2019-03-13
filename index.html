@@ -1,0 +1,37 @@
+<html>
+<head>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type=text/javascript>
+  $(function() {
+    $('a#search').bind('click', function() {
+      $.getJSON('/_add_numbers', {
+        a: $('input[name="a"]').val(),
+      }, function(data) {
+        $("#result").text(data.result);
+        alert("search successfully");
+      });
+      return false;
+    });
+
+    //speak
+     $('#speak').bind('click', function() {
+      $.getJSON('/SpeechToText',function(data) {
+        if(data)
+        	{$("#search").val(data.result)}
+        else
+            {$("#result").text("not successfully");}
+      });
+      return false;
+    });
+  });
+</script>
+</head>
+<body>
+<h1>jQuery Example</h1>
+<p><input type=text  name=a></p>
+<a href="#">search any thing in chrome</a>
+<p id="result"></p>
+<input type="search" id="search"  name=b>
+<button id='speak'>Text to speech</button>
+</body>
+</html>
